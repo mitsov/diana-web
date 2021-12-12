@@ -4,19 +4,18 @@ import * as ReactDOM from "react-dom";
 import { Machine, assign, actions, State } from "xstate";
 import { useMachine, asEffect } from "@xstate/react";
 import { inspect } from "@xstate/inspect";
-import { tdmDmMachine } from "./tdmClient";
-import { jaicpDmMachine } from "./jaicpClient";
-import { dmMachine } from "./dmColourChanger";
+// import { tdmDmMachine } from "./tdmClient";
+// import { jaicpDmMachine } from "./jaicpClient";
+import { dmMachine } from "./dmDiana";
 
 import createSpeechRecognitionPonyfill from 'web-speech-cognitive-services/lib/SpeechServices/SpeechToText'
 import createSpeechSynthesisPonyfill from 'web-speech-cognitive-services/lib/SpeechServices/TextToSpeech';
 
-let dm = dmMachine
-if (process.env.REACT_APP_BACKEND === 'TDM') {
-    dm = tdmDmMachine
-} else if (process.env.REACT_APP_BACKEND === 'JAICP') {
-    dm = jaicpDmMachine
-}
+// if (process.env.REACT_APP_BACKEND === 'TDM') {
+//     dm = tdmDmMachine
+// } else if (process.env.REACT_APP_BACKEND === 'JAICP') {
+//     dm = jaicpDmMachine
+// }
 
 
 const { send, cancel } = actions
@@ -29,7 +28,6 @@ inspect({
     iframe: false
 });
 
-
 const defaultPassivity = 10
 
 const machine = Machine<SDSContext, any, SDSEvent>({
@@ -37,7 +35,7 @@ const machine = Machine<SDSContext, any, SDSEvent>({
     type: 'parallel',
     states: {
         dm: {
-            ...dm
+            ...dmMachine
         },
 
         gui: {
