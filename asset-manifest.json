@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/speechstate/static/css/main.b1018c19.chunk.css",
-    "main.js": "/speechstate/static/js/main.2e646a25.chunk.js",
-    "main.js.map": "/speechstate/static/js/main.2e646a25.chunk.js.map",
-    "runtime-main.js": "/speechstate/static/js/runtime-main.3b14f31b.js",
-    "runtime-main.js.map": "/speechstate/static/js/runtime-main.3b14f31b.js.map",
-    "static/js/2.d1fd97bd.chunk.js": "/speechstate/static/js/2.d1fd97bd.chunk.js",
-    "static/js/2.d1fd97bd.chunk.js.map": "/speechstate/static/js/2.d1fd97bd.chunk.js.map",
-    "index.html": "/speechstate/index.html",
-    "static/css/main.b1018c19.chunk.css.map": "/speechstate/static/css/main.b1018c19.chunk.css.map",
-    "static/js/2.d1fd97bd.chunk.js.LICENSE.txt": "/speechstate/static/js/2.d1fd97bd.chunk.js.LICENSE.txt"
+    "main.css": "/diana-web/static/css/main.b1018c19.chunk.css",
+    "main.js": "/diana-web/static/js/main.4286951d.chunk.js",
+    "main.js.map": "/diana-web/static/js/main.4286951d.chunk.js.map",
+    "runtime-main.js": "/diana-web/static/js/runtime-main.1db48538.js",
+    "runtime-main.js.map": "/diana-web/static/js/runtime-main.1db48538.js.map",
+    "static/js/2.9a1c7469.chunk.js": "/diana-web/static/js/2.9a1c7469.chunk.js",
+    "static/js/2.9a1c7469.chunk.js.map": "/diana-web/static/js/2.9a1c7469.chunk.js.map",
+    "index.html": "/diana-web/index.html",
+    "static/css/main.b1018c19.chunk.css.map": "/diana-web/static/css/main.b1018c19.chunk.css.map",
+    "static/js/2.9a1c7469.chunk.js.LICENSE.txt": "/diana-web/static/js/2.9a1c7469.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3b14f31b.js",
-    "static/js/2.d1fd97bd.chunk.js",
+    "static/js/runtime-main.1db48538.js",
+    "static/js/2.9a1c7469.chunk.js",
     "static/css/main.b1018c19.chunk.css",
-    "static/js/main.2e646a25.chunk.js"
+    "static/js/main.4286951d.chunk.js"
   ]
 }
