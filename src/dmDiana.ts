@@ -1,6 +1,6 @@
 import { MachineConfig, send, Action } from "xstate";
 
-const cailaIntentEndpoint = `https://cors-anywhere.herokuapp.com/https://app.jaicp.com/cailapub/api/caila/p/${process.env.REACT_APP_CAILA}/nlu/inference?query=`
+const cailaIntentEndpoint = `https://cors.eu.org/https://app.jaicp.com/cailapub/api/caila/p/${process.env.REACT_APP_CAILA}/nlu/inference?query=`
 
 
 const cailaGetIntent = (query: string) => fetch(new Request(
@@ -29,11 +29,14 @@ export const dmMachine: MachineConfig<SDSContext, any, SDSEvent> = ({
                 CLICK: 'welcome'
             }
         },
-
+        
         welcome: {
             initial: 'prompt',
             on: {
-                RECOGNISED: '.next',
+                RECOGNISED: [
+                    {target:'supermarket', cond:(context, _evt) => context.recResult[0].utterance === 'Супермаркет.'}, 
+                    {target:'.next'}
+                ],
                 TIMEOUT: '..',
             },
             states: {
@@ -64,6 +67,27 @@ export const dmMachine: MachineConfig<SDSContext, any, SDSEvent> = ({
                 }
             }
         },
+
+        supermarket: {
+            initial:'prompt', 
+            states: { 
+                prompt: { 
+                    entry: say("Вот ты приходишь в магазин и, например, я - продавец. Ты должен что-то купить, например, мама или папа тебя попросили: у нас закончились хлеб и молоко, сходи купи пожалуйста в магазин. Что ты будешь делать?"),
+                    on: { ENDSPEECH: 'ask' }
+                },
+                ask: {entry:send('LISTEN'), on:{RECOGNISED:'prompt2'}},
+                prompt2:{
+                    entry: say("Угу. Что дальше?"),
+                    on: { ENDSPEECH: 'ask2' }
+                },
+                ask2: {entry:send('LISTEN'), on:{RECOGNISED:'prompt3'}},
+                prompt3:{
+                    entry: say("ну допустим вот я продавец, да? и если у тебя не хватает денег и ты взял молоко дороже, чем у тебя есть денег, и я говорю у вас не хватает 15 рублей. Что тогда?"),
+                    on: { ENDSPEECH: '#root.dm.init' }
+                    }
+            }
+        },
+
         stop: {
             entry: say("Ok"),
             always: 'init'
